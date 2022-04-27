@@ -1,0 +1,7 @@
+FROM snyk/snyk:gradle-6.4-jdk8
+COPY --chown=gradle:gradle . /home/gradle/src
+WORKDIR /home/gradle/src
+RUN gradle build --no-daemon 
+
+CMD ["snyk", "test", "--all-projects"]
+
